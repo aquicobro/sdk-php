@@ -1,32 +1,36 @@
 {
-    "name": "aquicobro/sdk-php",
-    "version": "0.1.0",
-    "description": "SDK de AquiCobro para PHP",
-    "keywords": ["aquicobro", "sdk", "php"],
-    "homepage": "https://www.aquicobro.com",
-    "type": "library",
-    "require": {
-        "php": "~7.1",
-        "guzzlehttp/guzzle": "~6.0"
+  "name": "aquicobro/sdk-php",
+  "description": "SDK de AquiCobro para PHP",
+  "keywords": [
+    "aquicobro",
+    "sdk",
+    "php"
+  ],
+  "homepage": "https://www.aquicobro.com",
+  "type": "library",
+  "require": {
+    "php": "~7.1",
+    "ext-json": "*",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "authors": [
+    {
+      "name": "Oscar Facundo Cornejo",
+      "email": "fcornejo@aquicobro.com",
+      "role": "CEO"
     },
-    "authors": [
-        {
-            "name": "Oscar Facundo Cornejo",
-            "email": "fcornejo@aquicobro.com",
-            "role": "CEO"
-        },
-        {
-            "name": "Rodrigo Daniel Cortinez Vogt",
-            "email": "rcortinez@aquicobro.com",
-            "role": "CTO"
-        }
-    ],
-    "support": {
-        "email": "info@aquicobro.com"
-    },
-    "autoload": {
-        "psr-4": {
-            "AquiCobro\\Sdk\\": "src/"
-        }
+    {
+      "name": "Rodrigo Daniel Cortinez Vogt",
+      "email": "rcortinez@aquicobro.com",
+      "role": "CTO"
     }
+  ],
+  "support": {
+    "email": "info@aquicobro.com"
+  },
+  "autoload": {
+    "psr-4": {
+      "AquiCobro\\Sdk\\": "src/"
+    }
+  }
 }

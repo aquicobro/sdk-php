@@ -6,20 +6,8 @@ namespace AquiCobro\Sdk;
 use AquiCobro\Sdk\Dtos\DtoCobroTiendaVirtual;
 use AquiCobro\Sdk\Params\ParamsNuevoCobroTiendaVirtual;
 
-class CobrosTiendaVirtual
+class CobrosTiendaVirtual extends OrdenesCobro
 {
-    /** @var ClienteHttp */
-    private $clienteHttp;
-
-    /**
-     * CobrosTiendaVirtual constructor.
-     * @param ClienteHttp $clienteHttp
-     */
-    public function __construct(ClienteHttp $clienteHttp)
-    {
-        $this->clienteHttp = $clienteHttp;
-    }
-
     /**
      * @param ParamsNuevoCobroTiendaVirtual $params
      * @return DtoCobroTiendaVirtual
@@ -27,8 +15,8 @@ class CobrosTiendaVirtual
      */
     public function nuevo(ParamsNuevoCobroTiendaVirtual $params): DtoCobroTiendaVirtual
     {
-        $response = $this->clienteHttp->post('cuentas-virtuales/cobros-tienda-virtual', [], $params->toArray());
-        return DtoCobroTiendaVirtual::fromDatos($this->clienteHttp->getDatos($response));
+        $response = $this->getClienteHttp()->post('cuentas-virtuales/cobros-tienda-virtual', [], $params->toArray());
+        return DtoCobroTiendaVirtual::fromDatos($this->getClienteHttp()->getDatos($response));
     }
 
     /**
@@ -39,7 +27,7 @@ class CobrosTiendaVirtual
     public function obtenerOrdenCobro(string $idOrdenCobro): DtoCobroTiendaVirtual
     {
         $query = ['idOrdenCobro' => $idOrdenCobro];
-        $response = $this->clienteHttp->get('/api/v1/ordenes-cobro/orden-cobro', $query);
-        return DtoCobroTiendaVirtual::fromDatos($this->clienteHttp->getDatos($response));
+        $response = $this->getClienteHttp()->get('ordenes-cobro/orden-cobro', $query);
+        return DtoCobroTiendaVirtual::fromDatos($this->getClienteHttp()->getDatos($response));
     }
 }
