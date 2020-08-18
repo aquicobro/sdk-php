@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace AquiCobro\Sdk;
 
 use AquiCobro\Sdk\Dtos\DtoOrdenCobro;
+use AquiCobro\Sdk\Dtos\DtoResOrdenesCobro;
 use AquiCobro\Sdk\Params\ParamsBuscarOrdenesCobro;
 use AquiCobro\Sdk\Params\ParamsNotificacionViaEmail;
 use AquiCobro\Sdk\Params\ParamsNotificacionViaSms;
@@ -32,17 +33,14 @@ class OrdenesCobro
 
     /**
      * @param ParamsBuscarOrdenesCobro $params
-     * @return DtoOrdenCobro[]
+     * @return DtoResOrdenesCobro
      * @throws Exception
      */
-    public function buscar(ParamsBuscarOrdenesCobro $params): array
+    public function buscar(ParamsBuscarOrdenesCobro $params): DtoResOrdenesCobro
     {
         $response = $this->getClienteHttp()->get('ordenes-cobro/buscar', $params->toArray());
-        $ordenesCobro = $this->getClienteHttp()->getArrayDatos($response);
-        foreach ($ordenesCobro as $i => $item) {
-            $ordenesCobro[$i] = DtoOrdenCobro::fromDatos($item);
-        }
-        return $ordenesCobro;
+        $datos = $this->getClienteHttp()->getDatos($response);
+        return DtoResOrdenesCobro::fromDatos($datos);
     }
 
     /**
