@@ -35,7 +35,7 @@ class DtoMovimientoCuenta
     /** @var boolean */
     public $conciliado;
 
-    /** @var string */
+    /** @var string|null */
     public $observaciones;
 
     /**
@@ -53,7 +53,7 @@ class DtoMovimientoCuenta
         $dto->debito = $datos->getFloat('debito');
         $dto->credito = $datos->getFloat('credito');
         $dto->conciliado = $datos->getBool('conciliado');
-        $dto->observaciones = $datos->getString('observaciones');
+        $dto->observaciones = $datos->getStringOrNull('observaciones');
         return $dto;
     }
 }
