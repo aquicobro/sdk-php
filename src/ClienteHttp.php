@@ -253,4 +253,25 @@ class ClienteHttp
         }
         return new Datos($response);
     }
+
+    /**
+     * Encapsula la respuesta en un array de objetos Datos para acceder y válidar el conjunto de datos obtenidos.
+     * @param $response
+     * @return Datos[]
+     * @throws Exception
+     */
+    public function getArrayDatos($response): array
+    {
+        if (!is_array($response)) {
+            throw new Exception('Se esperaba una respuesta del tipo array.');
+        }
+        $array = [];
+        foreach ($response as $i => $item) {
+            if (!is_array($item)) {
+                throw new Exception(sprintf('El item "%d" de la respuesta no es del tipo array.', $i));
+            }
+            $array[$i] = new Datos($item);
+        }
+        return $array;
+    }
 }
