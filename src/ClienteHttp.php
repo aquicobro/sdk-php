@@ -5,7 +5,6 @@ namespace AquiCobro\Sdk;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 
 class ClienteHttp
@@ -246,7 +245,7 @@ class ClienteHttp
         if ($accessToken !== null) {
             $headers['Authorization'] = 'Bearer ' . $accessToken;
         }
-        $opciones = [
+        return [
             'base_uri' => 'https://www.aquicobro.com/api/v1/',
             RequestOptions::VERIFY => __DIR__ . '/cacert.pem',
             RequestOptions::HEADERS => $headers
