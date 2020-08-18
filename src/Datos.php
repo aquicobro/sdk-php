@@ -134,6 +134,30 @@ class Datos
 
     /**
      * @param string $nombre
+     * @return Datos
+     * @throws Exception
+     */
+    public function getDatos(string $nombre): Datos
+    {
+        return new Datos($this->getArray($nombre));
+    }
+
+    /**
+     * @param string $nombre
+     * @return Datos|null
+     * @throws Exception
+     */
+    public function getDatosOrNull(string $nombre): ?Datos
+    {
+        $datos = $this->getArrayOrNull($nombre);
+        if ($datos === null) {
+            return null;
+        }
+        return new Datos($datos);
+    }
+
+    /**
+     * @param string $nombre
      * @return Datos[]
      * @throws Exception
      */
