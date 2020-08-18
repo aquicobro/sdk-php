@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace AquiCobro\Sdk\Dtos;
 
-use AquiCobro\Sdk\Exception;
 use AquiCobro\Sdk\Datos;
+use AquiCobro\Sdk\Exception;
 
 class DtoCobroOrdenCobro
 {
@@ -20,6 +20,12 @@ class DtoCobroOrdenCobro
     /** @var string */
     public $estado;
 
+    /** @var DtoDatosFacturacion|null */
+    public $datosFacturacion = null;
+
+    /** @var DtoComprobanteEmitido|null */
+    public $comprobanteEmitido = null;
+
     /**
      * @param Datos $datos
      * @return DtoCobroOrdenCobro
@@ -32,6 +38,14 @@ class DtoCobroOrdenCobro
         $dto->creacion = $datos->getString('creacion');
         $dto->importe = $datos->getFloat('importe');
         $dto->estado = $datos->getString('estado');
+        $dto->datosFacturacion = $datos->getDatosOrNull('datosFacturacion');
+        if ($dto->datosFacturacion !== null) {
+            $dto->datosFacturacion = DtoDatosFacturacion::fromDatos($dto->datosFacturacion);
+        }
+        $dto->comprobanteEmitido = $datos->getDatosOrNull('comprobanteEmitido');
+        if ($dto->comprobanteEmitido !== null) {
+            $dto->comprobanteEmitido = DtoComprobanteEmitido::fromDatos($dto->comprobanteEmitido);
+        }
         return $dto;
     }
 }
