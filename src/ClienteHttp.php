@@ -200,8 +200,8 @@ class ClienteHttp
         /** @var Client|null $client */
         static $client = null;
         if ($client === null) {
-            if ($this->accessToken === null) {
-                $this->accessToken = $this->getAccessToken((string) $this->idApiKey, (string) $this->secreto);
+            if ($this->accessToken === null && $this->idApiKey !== null && $this->secreto !== null) {
+                $this->accessToken = self::getAccessToken($this->idApiKey, $this->secreto);
             }
             $client = new Client(self::getOpciones($this->accessToken));
         }
