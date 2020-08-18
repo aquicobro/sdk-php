@@ -68,7 +68,7 @@ trait TraitOrdenCobro
     /** @var bool */
     public $vigente;
 
-    /** @var string */
+    /** @var string|null */
     public $urlBotonPago;
 
     /** @var null|string */
@@ -113,7 +113,7 @@ trait TraitOrdenCobro
         }
         $this->activa = $datos->getBool('activa');
         $this->vigente = $datos->getBool('vigente');
-        $this->urlBotonPago = $datos->getString('urlBotonPago');
+        $this->urlBotonPago = $datos->getStringOrNull('urlBotonPago');
         $this->nombreGrupo = $datos->getStringOrNull('nombreGrupo');
         $this->cantVenc = $datos->getInt('cantVenc');
         $this->notifEmail = $datos->getInt('notifEmail');
