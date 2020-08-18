@@ -21,6 +21,9 @@ class ClienteHttp
 
     /**
      * ClienteHttpAquiCobro constructor.
+     * Crea un cliente http sin autenticacion.
+     * @see ClienteHttp::conAccessToken()
+     * @see ClienteHttp::conCredenciales()
      */
     private function __construct()
     {
@@ -28,6 +31,7 @@ class ClienteHttp
     }
 
     /**
+     * Crea un cliente http que se autenticará con el access token provisto.
      * @param string $accessToken
      * @return ClienteHttp
      */
@@ -39,6 +43,7 @@ class ClienteHttp
     }
 
     /**
+     * Crea un cliente http que se autenticará con las credenciales provistas.
      * @param string $idApiKey
      * @param string $secreto
      * @return ClienteHttp
@@ -52,6 +57,7 @@ class ClienteHttp
     }
 
     /**
+     * Realiza una solicitud HTTP usando el método GET
      * @param string $uri
      * @param array $query
      * @return mixed
@@ -63,6 +69,7 @@ class ClienteHttp
     }
 
     /**
+     * Realiza una solicitud HTTP usando el método POST
      * @param string $uri
      * @param array $query
      * @param array $params
@@ -75,6 +82,7 @@ class ClienteHttp
     }
 
     /**
+     * Realiza una solicitud HTTP usando el método PUT
      * @param string $uri
      * @param array $query
      * @param array $params
@@ -87,6 +95,7 @@ class ClienteHttp
     }
 
     /**
+     * Realiza una solicitud HTTP usando el método DELETE
      * @param string $uri
      * @param array $query
      * @param array $params
@@ -99,6 +108,7 @@ class ClienteHttp
     }
 
     /**
+     * Realiza una solicitud HTTP
      * @param Client $client
      * @param string $method
      * @param string $uri
@@ -128,12 +138,11 @@ class ClienteHttp
                 $error = self::getError($error);
             }
             throw new Exception($error, 0, $exc);
-        } catch (GuzzleException $exc) {
-            throw new Exception($exc->getMessage(), 0, $exc);
         }
     }
 
     /**
+     * Extrae los datos devueltos por una respuesta exitosa codificada en JSON
      * @param string $apiOkResponse
      * @return mixed
      * @throws Exception
@@ -154,6 +163,7 @@ class ClienteHttp
     }
 
     /**
+     * Extrae el mensaje de error devuelto por una respuesta fallida codificada en JSON
      * @param string $apiErrorResponse
      * @return string
      * @throws Exception
@@ -182,6 +192,7 @@ class ClienteHttp
     }
 
     /**
+     * Devuelve el cliente HTTP creado o crea uno si aún no existe. Si no existe un access token trata de obtener uno.
      * @return Client
      * @throws Exception
      */
@@ -199,6 +210,7 @@ class ClienteHttp
     }
 
     /**
+     * Obtiene un access token para las credenciales provistas.
      * @param string $idApiKey
      * @param string $secreto
      * @return ClienteHttp
@@ -220,6 +232,7 @@ class ClienteHttp
     }
 
     /**
+     * Devuelve las opciones predeterminadas para todas las solicitudes del cliente HTTP.
      * @param string|null $accessToken
      * @return array
      */
@@ -238,10 +251,10 @@ class ClienteHttp
             RequestOptions::VERIFY => __DIR__ . '/cacert.pem',
             RequestOptions::HEADERS => $headers
         ];
-        return $opciones;
     }
 
     /**
+     * Encapsula la respuesta en un objeto Datos para acceder y válidar los datos obtenidos.
      * @param $response
      * @return Datos
      * @throws Exception
