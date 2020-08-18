@@ -6,13 +6,13 @@ namespace AquiCobro\Sdk\Dtos;
 use AquiCobro\Sdk\Datos;
 use AquiCobro\Sdk\Exception;
 
-class DtoCobroTiendaVirtual
+class DtoOrdenCobro
 {
     use TraitOrdenCobro;
 
     /**
      * @param Datos $datos
-     * @return DtoCobroTiendaVirtual
+     * @return DtoOrdenCobro
      * @throws Exception
      */
     public static function fromDatos(Datos $datos): self
