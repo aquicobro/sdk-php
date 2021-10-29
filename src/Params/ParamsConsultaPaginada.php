@@ -1,11 +1,5 @@
 <?php
 declare(strict_types=1);
-/**
- * Created by PhpStorm.
- * User: w10
- * Date: 18/08/2020
- * Time: 12:59
- */
 
 namespace AquiCobro\Sdk\Params;
 

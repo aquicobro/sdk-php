@@ -1,11 +1,5 @@
 <?php
 declare(strict_types=1);
-/**
- * Created by PhpStorm.
- * User: w10
- * Date: 18/08/2020
- * Time: 15:49
- */
 
 namespace AquiCobro\Sdk\Dtos;
 
