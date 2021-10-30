@@ -23,7 +23,7 @@ class CobrosTiendaVirtual extends OrdenesCobro
      * @param string $idOrdenCobro
      * @return DtoCobroTiendaVirtual
      * @throws Exception
-     * @deprecated Usar OrdenesCobro::obtener. En próximas versiones sera eliminado.
+     * @deprecated Usar OrdenesCobro::obtener. En próximas versiones será eliminado.
      */
     public function obtenerOrdenCobro(string $idOrdenCobro): DtoCobroTiendaVirtual
     {
