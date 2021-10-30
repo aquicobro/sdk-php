@@ -17,6 +17,7 @@ class ParamsNuevoCobroTiendaVirtual extends Params
      * @param string|null $urlPagoCancelado
      * @param string|null $urlPagoPendiente
      * @param string|null $urlNotificacionPago
+     * @param ParamsClienteTiendaVirtual|null $cliente
      */
     public function __construct(
         string $concepto,
@@ -26,7 +27,8 @@ class ParamsNuevoCobroTiendaVirtual extends Params
         ?string $urlPagoRealizado,
         ?string $urlPagoCancelado,
         ?string $urlPagoPendiente,
-        ?string $urlNotificacionPago
+        ?string $urlNotificacionPago,
+        ParamsClienteTiendaVirtual $cliente = null
     ) {
         parent::__construct(
             [
@@ -37,7 +39,8 @@ class ParamsNuevoCobroTiendaVirtual extends Params
                 'urlPagoRealizado' => $urlPagoRealizado,
                 'urlPagoCancelado' => $urlPagoCancelado,
                 'urlPagoPendiente' => $urlPagoPendiente,
-                'urlNotificacionPago' => $urlNotificacionPago
+                'urlNotificacionPago' => $urlNotificacionPago,
+                'cliente' => ($cliente !== null) ? $cliente->toArray() : null,
             ]
         );
     }
