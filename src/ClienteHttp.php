@@ -212,7 +212,7 @@ class ClienteHttp
      * Obtiene un access token para las credenciales provistas.
      * @param string $idApiKey
      * @param string $secreto
-     * @return ClienteHttp
+     * @return string
      * @throws Exception
      */
     public static function getAccessToken(string $idApiKey, string $secreto): string
