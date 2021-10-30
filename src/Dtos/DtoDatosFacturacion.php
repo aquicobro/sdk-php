@@ -23,6 +23,9 @@ class DtoDatosFacturacion
     /** @var string */
     public $domicilio;
 
+    /** @var string|null */
+    public $email;
+
     /**
      * @param Datos $datos
      * @return DtoDatosFacturacion
@@ -36,6 +39,7 @@ class DtoDatosFacturacion
         $dto->nroIdent = $datos->getString('nroIdent');
         $dto->nombre = $datos->getString('nombre');
         $dto->domicilio = $datos->getString('domicilio');
+        $dto->email = $datos->getStringOrNull('email');
         return $dto;
     }
 }
