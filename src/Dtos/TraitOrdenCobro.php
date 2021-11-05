@@ -17,6 +17,9 @@ trait TraitOrdenCobro
     /** @var DtoOrigenCobro */
     public $origen;
 
+    /** @var DtoClienteOrdenCobro|null */
+    public $cliente;
+
     /** @var string */
     public $creador;
 
@@ -89,6 +92,10 @@ trait TraitOrdenCobro
         $this->idOrdenCobro = $datos->getString('idOrdenCobro');
         $this->creacion = $datos->getString('creacion');
         $this->origen = DtoOrigenCobro::fromDatos($datos->getDatos('origen'));
+        $this->cliente = $datos->getDatosOrNull('cliente');
+        if ($this->cliente !== null) {
+            $this->cliente = DtoClienteOrdenCobro::fromDatos($this->cliente);
+        }
         $this->creador = $datos->getString('creador');
         $this->concepto = $datos->getString('concepto');
         $this->referencia = $datos->getStringOrNull('referencia');
